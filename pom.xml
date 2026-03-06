@@ -46,7 +46,7 @@
         <plugin.license-maven.version>5.0.0</plugin.license-maven.version>
 
         <!-- In Mysql: schema == database (http://dev.mysql.com/doc/refman/5.6/en/glossary.html#glos_schema) -->
-        <jdbcUrl>jdbc:mysql://${db.ip}:${db.port}/${db.schema}?useSSL=true&amp;serverTimezone=UTC</jdbcUrl>
+        <jdbcUrl>jdbc:mariadb://${db.ip}:${db.port}/${db.schema}?useSSL=false&amp;serverTimezone=UTC</jdbcUrl>
     </properties>
 
     <profiles>
@@ -268,7 +268,7 @@
                     <table>schema_version</table>
 
                     <cleanDisabled>true</cleanDisabled>
-                    <driver>com.mysql.cj.jdbc.Driver</driver>
+                    <driver>org.mariadb.jdbc.Driver</driver>
                     <url>${jdbcUrl}</url>
                     <user>${db.user}</user>
                     <password>${db.password}</password>
@@ -326,7 +326,7 @@
                      http://www.jooq.org/doc/3.5/manual/code-generation/codegen-advanced/ -->
                 <configuration>
                     <jdbc>
-                        <driver>com.mysql.cj.jdbc.Driver</driver>
+                        <driver>org.mariadb.jdbc.Driver</driver>
                         <url>${jdbcUrl}</url>
                         <user>${db.user}</user>
                         <password>${db.password}</password>
@@ -526,9 +526,13 @@
         </dependency>
 
         <!-- DB -->
-        <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
+            <dependency>
+                <groupId>com.mysql</groupId>
+                <artifactId>mysql-connector-j</artifactId>
+            </dependency>        <dependency>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
+            <version>3.3.3</version>
         </dependency>
         <dependency>
             <groupId>org.jooq</groupId>
