@@ -107,11 +107,16 @@ SteVe is designed to run standalone, a java servlet container / web server (e.g.
 	
 6. Run SteVe woth docker
 
+    ```
+    # docker compose down
+	# docker images -a
+	# dos2unix mvnw
+	# docker system prune -a
 	# docker build --no-cache -t steve-local .
 	# docker compose down
 	# docker compose up -d mariadb
 	# docker compose up steve
-	
+    ```	
 	
 
 # Docker
